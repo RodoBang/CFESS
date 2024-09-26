@@ -1,30 +1,35 @@
-/*=============== SHOW HIDDEN - PASSWORD ===============*/
+// Mostrar/Ocultar Contraseña
 const showHiddenPassword = (inputPassword, inputIcon) => {
   const input = document.getElementById(inputPassword),
-        iconEye = document.getElementById(inputIcon)
+        iconEye = document.getElementById(inputIcon);
 
   iconEye.addEventListener('click', () => {
-    // Change password to text
     if (input.type === 'password') {
-      // Switch to text
-      input.type = 'text'
-
-      // Add icon
-      iconEye.classList.add('ri-eye-line')
-
-      // Remove icon
-      iconEye.classList.remove('ri-eye-off-line')
+      input.type = 'text';
+      iconEye.classList.add('ri-eye-line');
+      iconEye.classList.remove('ri-eye-off-line');
     } else {
-      // Change to password
-      input.type = 'password'
-
-      // Remove icon
-      iconEye.classList.remove('ri-eye-line')
-
-      // Add icon
-      iconEye.classList.add('ri-eye-off-line')
+      input.type = 'password';
+      iconEye.classList.add('ri-eye-off-line');
+      iconEye.classList.remove('ri-eye-line');
     }
-  })
-}
+  });
+};
 
-showHiddenPassword('password', 'input-icon')
+document.getElementById('login-form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Evita el comportamiento por defecto del formulario
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Validación básica
+  if (email && password) {
+    // Redirigir al menú (corrige la ruta al archivo menu.html)
+    window.location.assign("Menu.html");
+  } else {
+    alert("Por favor, completa todos los campos.");
+  }
+});
+
+// Inicializa el mostrar/ocultar contraseña
+showHiddenPassword('password', 'input-icon');
